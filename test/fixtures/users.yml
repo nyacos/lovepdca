@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  avator: MyString
+  line_user_id: MyString
+  role: 
+
+two:
+  name: MyString
+  avator: MyString
+  line_user_id: MyString
+  role: 
