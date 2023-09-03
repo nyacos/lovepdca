@@ -3,6 +3,9 @@
 ## figma URL
 https://www.figma.com/file/K5WpGb1FEUvdS0eQ9JIpqf/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=5kkHdeHXN5im4awA-1
 
+## ER図
+https://gyazo.com/7708a97b0d634863031555ac8603da54
+
 ## サービス概要
 
 「幸せなお付き合いをしたいだけなのに…」
