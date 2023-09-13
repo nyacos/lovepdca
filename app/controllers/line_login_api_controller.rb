@@ -1,6 +1,6 @@
 class LineLoginApiController < ApplicationController
   require 'json'
-  require 'typheus'
+  require 'typhoeus'
   require 'securerandom'
 
   def login
@@ -29,7 +29,7 @@ def callback
   if params[:state] == session[:state]
 
     line_user_id = get_line_user_id(params[:code])
-    user = User.find_or_iinitialize_by(line_user_id: line_user_id)
+    user = User.find_or_initialize_by(line_user_id: line_user_id)
 
     if user.save
       session[:user_id] = user.id
@@ -45,7 +45,7 @@ end
 
 private
 
-def get_kine_user_id(code)
+def get_line_user_id(code)
 
   # ユーザーのIDトークンからプロフィール情報（ユーザーID）を取得する
   # https://developers.line.biz/ja/docs/line-login/verify-id-token/
@@ -76,14 +76,10 @@ def get_kine_user_id(code)
 
 end
 
-def get_line_user_id(code)
+def get_line_user_id_token(code)
 
   # ユーザーのアクセストークン（IDトークン）を取得する）
   # https://developers.line.biz/ja/reference/line-login/#issue-access-token
-
-  line_user_id_token = get_line_user_id_token(code)
-
-  if line_user_id_token.present?
 
     url = 'https://api.line.me/oauth2/v2.1/token'
     redirect_uri = line_login_api_callback_url
@@ -96,7 +92,7 @@ def get_line_user_id(code)
         grant_type: 'authorization_code',
         code: code,
         redirect_uri: redirect_uri,
-        client_id: '2000591847'
+        client_id: '2000591847',
         client_secret: '380462b61a63c24d38c2161cfc40d010'
       }
     }
